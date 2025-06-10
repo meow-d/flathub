@@ -1,0 +1,49 @@
+id: com.openutau.OpenUtau
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.dotnet6
+build-options:
+  prepend-path: "/usr/lib/sdk/dotnet6/bin"
+  append-ld-library-path: "/usr/lib/sdk/dotnet6/lib"
+  prepend-pkg-config-path: "/usr/lib/sdk/dotnet6/lib/pkgconfig"
+
+command: OpenUtau
+
+finish-args:
+  - --device=dri
+  # TODO: Replace this with wayland and fallback-x11 once Wayland support
+  #       becomes available:
+  #       https://github.com/AvaloniaUI/Avalonia/pull/8003
+  - --socket=x11
+  - --share=ipc
+  - --env=DOTNET_ROOT=/app/lib/dotnet
+  - --socket=pulseaudio
+  # for 'open recent'
+  - --filesystem=home
+
+modules:
+  - name: dotnet
+    buildsystem: simple
+    build-commands:
+    - /usr/lib/sdk/dotnet6/bin/install.sh
+
+  - name: OpenUtau
+    buildsystem: simple
+    sources:
+      - type: git
+        url: https://github.com/stakira/OpenUtau
+        tag: "build/0.1.529"
+      - ./nuget-sources.json
+      - type: file
+        path: com.openutau.OpenUtau.desktop
+      - type: file
+        path: com.openutau.OpenUtau.metainfo.xml
+    build-commands:
+      - dotnet publish OpenUtau/OpenUtau.csproj -r linux-x64 -c Release --no-self-contained --source ./nuget-sources -p:Version=0.1.529
+      - mkdir -p ${FLATPAK_DEST}/bin ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps ${FLATPAK_DEST}/share/applications ${FLATPAK_DEST}/share/metainfo
+      - cp -r OpenUtau/bin/Release/net6.0/linux-x64/publish/* ${FLATPAK_DEST}/bin
+      - cp Logo/openutau.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/com.openutau.OpenUtau.svg
+      - cp com.openutau.OpenUtau.desktop ${FLATPAK_DEST}/share/applications/
+      - cp com.openutau.OpenUtau.metainfo.xml ${FLATPAK_DEST}/share/metainfo/

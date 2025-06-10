@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OpenUtau
+Comment=Open singing synthesis platform / Open source UTAU successor
+Categories=AudioVideo;Audio;Midi;
+Icon=com.openutau.OpenUtau
+Exec=OpenUtau

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.openutau.OpenUtau</id>
+
+  <name>OpenUtau</name>
+  <summary>Open singing synthesis platform / Open source UTAU successor</summary>
+  <url type="homepage">https://www.openutau.com/</url>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+
+  <description>
+    <p>
+      OpenUtau is a free, open-source editor made for the UTAU community.
+    </p>
+    <p>
+      All features
+    </p>
+    <ul>
+      <li>Modern user experience.</li>
+      <li>Easy navigation using the mouse and keyboard.</li>
+      <li>Feature-rich MIDI editor.</li>
+      <li>Support for importing VSQX (Vocaloid 4) tracks.</li>
+      <li>Selective backward compatibility with UTAU. OpenUtau aims to solve problems with fewer steps. It is not designed to replicate UTAU features exactly.</li>
+      <li>Extensible real-time phonetic editing. Includes phonemizers for different phonetic systems (VCV, CVVC, Arpasing, etc.) in many different languages (English, Japanese, Chinese, Korean, Russian and more).</li>
+      <li>Expressions replace the standard UTAU &quot;flags&quot; for tuning. The built-in WORLDLINE-R resampler supports curve tuning, similar to many vocal synth editors.</li>
+      <li>Internationalisation, including UI translation and file system encoding support. Unlike UTAU, there is no need to change your system locale to use OpenUtau.</li>
+      <li>Smooth preview/rendering experience. Pre-rendering allows OpenUtau to render vocals before playback, saving time during editing and tuning.</li>
+      <li>Supports ENUNU AI singers.</li>
+      <li>Easy-to-use plugin system.</li>
+      <li>Versatile resampling engine interface. Compatible with most UTAU resamplers.</li>
+      <li>Runs on Windows (32/64 bit), macOS, and Linux.</li>
+    </ul>
+    <p>
+      What it doesn't do
+    </p>
+    <ul>
+      <li>While OpenUtau can do very minimal mixing, it will not replace your digital audio workstation of choice.</li>
+      <li>OpenUtau does not aim for Vocaloid compatibility, except for some limited features.</li>
+    </ul>
+  </description>
+
+  <content_rating type="oars-1.1" />
+
+  <launchable type="desktop-id">com.openutau.OpenUtau.desktop</launchable>
+</component>
